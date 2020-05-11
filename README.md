@@ -17,3 +17,5 @@ https://www.zdnet.com/article/this-is-the-dishwasher-with-an-unsecured-web-serve
 https://www.heise.de/newsticker/meldung/Miele-verspricht-Sicherheits-Update-fuer-Desinfektionsautomaten-3669611.html
 
 https://www.golem.de/news/internet-of-things-fehler-in-geschirrspueler-ermoeglicht-zugriff-auf-webserver-1703-126953.html
+
+https://www.deutschlandfunk.de/it-sicherheit-phishing-mails-webcam-spitzel-oder-hacker.1775.de.html?dram:article_id=326033
