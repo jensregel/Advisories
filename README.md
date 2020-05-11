@@ -19,3 +19,5 @@ https://www.heise.de/newsticker/meldung/Miele-verspricht-Sicherheits-Update-fuer
 https://www.golem.de/news/internet-of-things-fehler-in-geschirrspueler-ermoeglicht-zugriff-auf-webserver-1703-126953.html
 
 https://www.deutschlandfunk.de/it-sicherheit-phishing-mails-webcam-spitzel-oder-hacker.1775.de.html?dram:article_id=326033
+
+https://www.echo-online.de/wirtschaft/wirtschaft-regional/risiko-raucherpause-it-dienstleister-decken-schwachstellen-auf_20870163
