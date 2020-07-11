@@ -2,6 +2,8 @@
 
 This repository contains a few vulnerabilities that were found and reported during vulnerability assessments.
 
+Everything in this repository is for educational purposes only.
+
 # Links
 
 https://www.us-cert.gov/ics/advisories/ICSA-17-138-01
