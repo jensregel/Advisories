@@ -51,4 +51,4 @@ Update Portal: http://www-933.ibm.com/support/fixcentral/
 
 Author:
 =======
-Jens Regel <jens[at]loxiran[dot]de>
+Jens Regel
