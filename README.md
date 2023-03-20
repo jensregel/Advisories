@@ -6,6 +6,8 @@ Everything in this repository is for educational purposes only.
 
 # Links
 
+https://www.cisa.gov/news-events/ics-advisories/icsa-22-342-02
+
 https://www.us-cert.gov/ics/advisories/ICSA-17-138-01
 
 https://www.vice.com/en_us/article/pg9qkv/a-hackable-dishwasher-is-connecting-hospitals-to-the-internet-of-shit
