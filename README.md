@@ -6,6 +6,8 @@ Everything in this repository is for educational purposes only.
 
 # Links
 
+https://www.securityweek.com/organizations-notified-of-remotely-exploitable-vulnerabilities-in-aveva-hmi-scada-products/
+
 https://www.cisa.gov/news-events/ics-advisories/icsa-22-342-02
 
 https://www.us-cert.gov/ics/advisories/ICSA-17-138-01
