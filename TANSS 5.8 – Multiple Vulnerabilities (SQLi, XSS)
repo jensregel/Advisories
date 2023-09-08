@@ -1,0 +1,63 @@
+Author:
+Jens Regel & Jens Gödde
+
+Affected version:
+TANSS version 5.8.23.2 and earlier
+
+Fixed version:
+TANSS 5.8.23.3
+
+Timeline:
+
+    2023-05-18 Vulnerabilities discovered
+    2023-05-26 Send details to vendor
+    2023-05-27 Vendor confirmed the vulnerability
+    2023-05-05 Vendor released fix
+    2023-07-03 CVE request
+    2023-07-18 CVE assigned
+    2023-07-21 Public disclosure
+
+Description:
+
+During a penetration test, we identified several vulnerabilities in the TANSS 5.8 ticket system. These include 2 SQL injection vulnerabilities and a reflected cross-site scripting vulnerability. Furthermore, several libraries with already known vulnerabilities were identified, which can be exploited by attackers.
+The SQL injection vulnerabilities makes it possible, for example, to read all session IDs from the table tanss.session and to set the session ID as a session cookie in the browser in order to log on in the context of another user.
+
+[1] SQL injection
+
+CVE ID: CVE-2023-37736
+CVSS: 8.3 CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L
+CWE-89: Improper Neutralization of Special Elements used in an SQL Command (‚SQL Injection‘)
+
+We have identified 2 SQL injection vulnerabilities in the HTTP GET parameters
+
+    index.php?section=stammdaten&sub=mitarbeiter_show&maID=[SQLi]
+    index.php?section=stammdaten&sub=domain&task=view&id=[SQLi]
+
+These can be exploited using UNION SELECT statements to inject malicious SQL commands. The content of the table tanss.config can be read out as shown in the screenshot below. It is also possible to escalate privileges by extracting the active session IDs from the tanss.session table and then using them as session cookies to log on to TANSS in the context of another user.
+
+[2] Cross-site scripting
+
+CVE ID: CVE-2023-37735
+CVSS: 7.1 CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N
+CWE-79: Improper Neutralization of Input During Web Page Generation (‚Cross-site Scripting‘)
+
+A reflected cross-site scripting vulnerability exists in the HTTP GET parameter index.php?section=bug&sub=[XSS]. As an example, it is possible to mislead users and obtain sensitive information using a manipulated link. In the screenshot below, the JavaScript variable SessionConfiguration.api.key embedded in the HTML code, which contains the bearer token for the TANSS API, is read out. With the additional use of the Fetch API, it would also be possible to send the API key to the attacker.
+
+[3] Using Components with Known Vulnerabilities
+
+In the TANSS web application, several JavaScript libraries are integrated in outdated and vulnerable versions, which can be used to execute malicious code.
+
+Library: PHP Mailer Version 5.2.14
+URL: https://tanss/vendor/php_mailer/changelog.md
+CVE ID: CVE-2016-10033, CVE-2016-10045, CVE-2017-5223, CVE-2017-11503, CVE-2018-19296, CVE-2020-13625, CVE-2021-34551, CVE-2021-3603
+CWE-1395: Dependency on Vulnerable Third-Party Component
+
+Library: jQuery 1.10.2
+URL: https://tanss/ajax/jquery/jquery-1.10.2.js
+CVE ID: CVE-2015-9251, CVE-2016-10707, CVE-2020-11023, CVE-2020-11022
+CWE-1395: Dependency on Vulnerable Third-Party Component
+
+Library: jQuery UI 1.10.4
+URL: https://tanss/ajax/jquery/jquery-ui-1.10.4.custom.min.js
+CVE ID: CVE-2021-41183, CVE-2021-41182, CVE-2021-41184, CVE-2022-31160
+CWE-1395: Dependency on Vulnerable Third-Party Component
