@@ -1,0 +1,46 @@
+Title:
+======
+Reflected Cross-Site Scripting in QWC OGC service
+
+CVSS:
+=====
+4.3 CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N
+
+CVE-ID:
+=======
+n/a
+
+Timeline:
+=========
+11/03/2025 - Vulnerability discovered
+11/03/2025 - Reported to security@qgis.org
+11/03/2025 - Vendor has confirmed the vulnerability and fixed it immediately
+
+Affected Products:
+==================
+QWC OGC service <= v2025.2-lts which is part of the QGIS Web Client 2
+https://github.com/qwc-services/qwc-ogc-service
+
+Details:
+========
+A remote attacker could exploit this vulnerability to execute a script in a victim's web browser within the security context of the hosting website when the victim clicks a malicious URL. This could allow the attacker to steal the victim's cookie-based authentication credentials.
+
+Exploiting this vulnerability requires the victim to be authenticated with a valid user ID and password when clicking the compromised link.
+
+The GET parameter LAYERS is susceptible to reflected JavaScript injection.
+
+Proof of Concept:
+=================
+https://example.org/ows/qwc_demo?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=%2C%2C%2C%2C%2C%2C&TRANSPARENT=true&LAYERS=x%3Ca%20xmlns:a=%27http://www.w3.org/1999/xhtml%27%3E%3Ca:body%20onload=%27alert(document.domain)%27/%3E%3C/a%3E
+
+Fix:
+====
+Fixed in QWC OGC service v2025.03.11
+
+Ref:
+====
+https://github.com/qwc-services/qwc-ogc-service/commit/9c89de9a1793fd188173e0f3ce41d3b243cad6bf
+
+Author:
+=======
+Jens Regel
