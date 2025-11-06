@@ -1,8 +1,7 @@
 # Security Advisories
 
-This repository contains a few vulnerabilities that were found and reported during vulnerability assessments.
-
-Everything in this repository is for educational purposes only.
+This repository includes several vulnerabilities that were discovered and reported during penetration tests.
+All content in this repository is provided for educational purposes only.
 
 # Links
 
